@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact">
+  <div class="contact-page">
+    <h1>Contact</h1>
+
+    <div class="contact-content">
+      <section class="contact-info">
+        <h2>Nous contacter</h2>
+        <p>Vous avez des questions sur nos activités, nos stages ou nos événements ? N'hésitez pas à nous contacter !</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <span class="icon">📧</span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:contact@femmesetguerrieres.be">contact@femmesetguerrieres.be</a>
+            </div>
+          </div>
+
+          <!-- Décommentez et modifiez si vous avez un téléphone -->
+          <!--
+          <div class="info-item">
+            <span class="icon">📱</span>
+            <div>
+              <strong>Téléphone</strong>
+              <a href="tel:+32123456789">+32 123 45 67 89</a>
+            </div>
+          </div>
+          -->
+
+          <!-- Décommentez et modifiez si vous avez une adresse -->
+          <!--
+          <div class="info-item">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Adresse</strong>
+              <p>Rue de l'exemple 123<br>1000 Bruxelles, Belgique</p>
+            </div>
+          </div>
+          -->
+        </div>
+      </section>
+
+      <section class="social-links">
+        <h2>Suivez-nous</h2>
+        <div class="social-icons">
+          <!-- Modifiez les liens vers vos réseaux sociaux -->
+          <a href="https://facebook.com/femmesetguerrieres" target="_blank" rel="noopener" class="social-link">
+            <span>Facebook</span>
+          </a>
+          <a href="https://instagram.com/femmesetguerrieres" target="_blank" rel="noopener" class="social-link">
+            <span>Instagram</span>
+          </a>
+          <!-- Ajoutez d'autres réseaux si nécessaire -->
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .contact-content {
+    display: grid;
+    gap: 2rem;
+  }
+
+  section {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .info-item .icon {
+    font-size: 1.5rem;
+  }
+
+  .info-item strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--color-primary);
+  }
+
+  .info-item a {
+    color: var(--color-secondary);
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .social-link:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+  }
+
+  @media (max-width: 600px) {
+    section {
+      padding: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allEvents = await getCollection('events');
+const now = new Date();
+
+const upcomingEvents = allEvents
+  .filter(e => e.data.date >= now)
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+const pastEvents = allEvents
+  .filter(e => e.data.date < now)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Événements">
+  <h1>Événements</h1>
+
+  <section class="section">
+    <h2>Événements à venir</h2>
+    {upcomingEvents.length > 0 ? (
+      <div class="events-grid">
+        {upcomingEvents.map((event) => (
+          <article class="card upcoming">
+            {event.data.image && (
+              <img src={event.data.image} alt={event.data.title} />
+            )}
+            <div class="card-content">
+              <h3><a href={`/evenements/${event.slug}`}>{event.data.title}</a></h3>
+              <p class="date">
+                📅 {event.data.date.toLocaleDateString('fr-BE', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+              <p class="location">📍 {event.data.location}</p>
+              <p>{event.data.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="empty">Aucun événement à venir pour le moment. Restez connectés !</p>
+    )}
+  </section>
+
+  <section class="section">
+    <h2>Événements passés</h2>
+    {pastEvents.length > 0 ? (
+      <div class="events-grid">
+        {pastEvents.map((event) => (
+          <article class="card past">
+            {event.data.image && (
+              <img src={event.data.image} alt={event.data.title} />
+            )}
+            <div class="card-content">
+              <h3><a href={`/evenements/${event.slug}`}>{event.data.title}</a></h3>
+              <p class="date">
+                📅 {event.data.date.toLocaleDateString('fr-BE', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+              <p class="location">📍 {event.data.location}</p>
+              <p>{event.data.description}</p>
+              {event.data.photos && event.data.photos.length > 0 && (
+                <p class="photos-hint">📷 {event.data.photos.length} photos disponibles</p>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="empty">Aucun événement passé.</p>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-primary);
+  }
+
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .card {
+    background: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .card.past {
+    opacity: 0.8;
+  }
+
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .date {
+    color: var(--color-secondary);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .location {
+    color: #666;
+    margin-bottom: 0.75rem;
+  }
+
+  .photos-hint {
+    margin-top: 0.75rem;
+    color: var(--color-primary);
+    font-size: 0.875rem;
+  }
+
+  .empty {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 2rem;
+    background: var(--color-white);
+    border-radius: 8px;
+  }
+</style>

@@ -1,0 +1,149 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Femmes et Guerrières - Auto-défense et empowerment féminin en Belgique" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Femmes et Guerrières</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">Femmes et Guerrières</a>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/evenements">Événements</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>&copy; {new Date().getFullYear()} Femmes et Guerrières. Tous droits réservés.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --color-primary: #8B4513;
+    --color-secondary: #D2691E;
+    --color-accent: #CD853F;
+    --color-text: #333;
+    --color-background: #FFF8F0;
+    --color-white: #fff;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-secondary);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  header {
+    background: var(--color-white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-weight: 500;
+  }
+
+  footer {
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+  }
+
+  footer a {
+    color: var(--color-white);
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    nav ul {
+      gap: 1rem;
+      justify-content: center;
+    }
+  }
+</style>
