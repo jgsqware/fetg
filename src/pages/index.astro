@@ -15,9 +15,11 @@ const fmtDate = (d: Date) =>
 
 <BaseLayout title="Accueil">
   <section class="hero">
-    <span class="badge">ASBL · Tinlot, Belgique</span>
+    <img src="/logo.jpeg" alt="Femmes & Guerrières" class="hero-logo" />
+    <span class="badge">ASBL · Région de Liège, Belgique</span>
     <h1>Femmes <span>&amp;</span> Guerrières</h1>
-    <p>Un espace d'entraide, d'écoute et d'empowerment féminin. Ensemble, on se relève plus fortes.</p>
+    <p class="tagline">« Quand la maladie vient altérer notre féminité » 🩷</p>
+    <p>Un espace d'entraide, d'écoute et de bien-être pour les femmes confrontées à la maladie. Ensemble, on se relève plus fortes.</p>
     <div class="hero-cta">
       <a href="/soutenir" class="btn btn-primary">Soutenir l'association</a>
       <a href="/evenements" class="btn btn-ghost">Voir l'agenda</a>
@@ -88,8 +90,23 @@ const fmtDate = (d: Date) =>
     margin-bottom: 0.6rem;
   }
   .hero h1 span { color: var(--color-accent-dark); }
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.2rem;
+    box-shadow: var(--shadow);
+    border: 4px solid #fff;
+  }
+  .tagline {
+    font-style: italic;
+    color: var(--color-accent-dark);
+    font-weight: 500;
+    margin-bottom: 0.6rem !important;
+  }
   .hero > p {
-    max-width: 30rem;
+    max-width: 32rem;
     margin: 0 auto 1.6rem;
     color: var(--color-taupe-dark);
     font-size: 1.05rem;

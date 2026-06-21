@@ -1,23 +1,23 @@
 ---
-title: "Bienvenue sur Femmes et Guerrières"
-description: "Découvrez notre mission et nos activités d'auto-défense et d'empowerment féminin."
+title: "Bienvenue chez Femmes & Guerrières"
+description: "Découvrez notre mission : accompagner et soutenir les femmes confrontées à la maladie, quand celle-ci vient altérer notre féminité."
 date: 2024-01-15
 author: "L'équipe"
-tags: ["auto-défense", "empowerment", "femmes"]
+tags: ["soutien", "entraide", "bien-être"]
 ---
 
-Bienvenue sur le nouveau site de **Femmes et Guerrières** !
+Bienvenue sur le site de **Femmes & Guerrières** 🩷
 
 ## Notre Mission
 
-Nous sommes une association dédiée à l'auto-défense et à l'empowerment des femmes en Belgique. Notre objectif est de permettre à chaque femme de se sentir en confiance et en sécurité.
+*« Quand la maladie vient altérer notre féminité »* — c'est tout le sens de notre engagement. Notre association accompagne les femmes touchées par la maladie, dans un espace d'écoute, d'entraide et de bienveillance.
 
 ## Nos Activités
 
-- **Cours d'auto-défense** : Apprenez des techniques efficaces dans un environnement bienveillant
-- **Ateliers d'empowerment** : Renforcez votre confiance en vous
-- **Stages intensifs** : Des formations complètes sur un weekend
+- **Groupes de parole** : en présentiel ou en visio, des moments d'échange à thématique spécifique pour ne pas rester seule
+- **Ateliers bien-être** : écriture, créativité et reconstruction de soi
+- **Accompagnement** : un soutien personnalisé, tout au long du chemin
 
 ## Rejoignez-nous
 
-N'hésitez pas à consulter nos événements à venir et à nous contacter pour plus d'informations !
+Que vous soyez concernée, proche ou simplement solidaire, vous avez votre place parmi nous. Consultez notre agenda et n'hésitez pas à nous contacter !

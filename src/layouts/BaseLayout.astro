@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Femmes et Guerrières - Association d'entraide et d'empowerment féminin en Belgique" } = Astro.props;
+const { title, description = "Femmes & Guerrières - Soutien et entraide pour les femmes confrontées à la maladie. Groupes de parole, bien-être et accompagnement en Belgique." } = Astro.props;
 
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -34,7 +34,10 @@ const nav = [
   <body>
     <header class="topbar">
       <nav class="topnav">
-        <a href="/" class="logo">Femmes&nbsp;&amp;&nbsp;Guerrières</a>
+        <a href="/" class="logo">
+          <img src="/logo.jpeg" alt="Femmes & Guerrières" class="logo-img" />
+          <span>Femmes&nbsp;&amp;&nbsp;Guerrières</span>
+        </a>
         <ul class="topnav-links">
           {nav.map((item) => (
             <li>
@@ -53,7 +56,7 @@ const nav = [
 
     <footer>
       <p class="footer-title">Femmes &amp; Guerrières</p>
-      <p>Association sans but lucratif — Tinlot, Belgique</p>
+      <p>Association sans but lucratif — Région de Liège, Belgique</p>
       <p class="footer-small">&copy; {new Date().getFullYear()} — Tous droits réservés</p>
     </footer>
 
@@ -139,10 +142,20 @@ const nav = [
     gap: 1.5rem;
   }
   .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--color-text);
     white-space: nowrap;
+  }
+  .logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
   }
   .topnav-links {
     list-style: none;
