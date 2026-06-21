@@ -76,14 +76,16 @@ const nav = [
   }
 
   :root {
-    --color-primary: #116DFF;
-    --color-primary-dark: #0B53C8;
-    --color-cream: #FDF6F4;
-    --color-pink: #FEE1D9;
-    --color-pink-deep: #F7C3B6;
-    --color-taupe: #887776;
-    --color-taupe-dark: #645853;
-    --color-text: #2A2422;
+    --color-primary: #211B19;        /* encre noire du logo */
+    --color-primary-dark: #000000;
+    --color-accent: #E0899B;         /* rose mauve aquarelle */
+    --color-accent-dark: #C76A80;
+    --color-cream: #FDF4F2;
+    --color-pink: #F8DAD4;
+    --color-pink-deep: #F2C3BC;
+    --color-taupe: #9A8A86;
+    --color-taupe-dark: #6E5F5B;
+    --color-text: #211B19;
     --color-white: #ffffff;
     --radius: 18px;
     --shadow: 0 8px 30px rgba(100, 88, 83, 0.12);
@@ -155,10 +157,10 @@ const nav = [
     border-bottom: 2px solid transparent;
     transition: color .15s, border-color .15s;
   }
-  .topnav-links a:hover { color: var(--color-primary); }
+  .topnav-links a:hover { color: var(--color-accent-dark); }
   .topnav-links a.active {
-    color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
+    color: var(--color-accent-dark);
+    border-bottom-color: var(--color-accent-dark);
   }
   .topnav-cta {
     background: var(--color-primary);
@@ -167,7 +169,7 @@ const nav = [
     border-radius: 999px;
     font-weight: 600;
     font-size: 0.92rem;
-    box-shadow: 0 6px 16px rgba(17, 109, 255, 0.28);
+    box-shadow: 0 6px 16px rgba(33, 27, 25, 0.22);
     transition: transform .15s, box-shadow .15s;
   }
   .topnav-cta:hover { transform: translateY(-1px); color:#fff; }
@@ -212,7 +214,7 @@ const nav = [
     filter: grayscale(40%);
     transition: transform .15s, filter .15s;
   }
-  .bottomnav a.active { color: var(--color-primary); }
+  .bottomnav a.active { color: var(--color-accent-dark); }
   .bottomnav a.active .bn-icon { filter: none; transform: translateY(-1px) scale(1.08); }
 
   @media (max-width: 760px) {
