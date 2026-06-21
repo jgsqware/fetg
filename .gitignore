@@ -21,3 +21,6 @@ Thumbs.db
 
 # Astro
 .astro/
+
+# Scraped raw data (large, regenerable via scrape-wix.js)
+scraped-content/

@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Liens de paiement — à remplacer par vos vrais liens (Stripe Payment Link / Buy Me a Coffee).
+const DON_URL = "https://buymeacoffee.com/femmesetguerrieres";
+const MEMBRE_URL = "https://buy.stripe.com/test_membre"; // remplacer par le Payment Link réel
+
+const dons = [3, 5, 10, 20];
+---
+
+<BaseLayout title="Soutenir">
+  <section class="intro">
+    <span class="badge">Soutenir l'asbl</span>
+    <h1>Aidez-nous à continuer 💛</h1>
+    <p>Femmes &amp; Guerrières vit grâce à vous. Choisissez la formule qui vous correspond : une participation libre, ou une cotisation qui vous ouvre toutes nos activités.</p>
+  </section>
+
+  <div class="tiers">
+    <!-- Tier 1 : participation libre -->
+    <article class="tier">
+      <div class="tier-icon">☕</div>
+      <h2>Participation libre</h2>
+      <p class="tier-sub">Un coup de pouce ponctuel, sans engagement.</p>
+      <p class="tier-price">À partir de <strong>3&nbsp;€</strong></p>
+
+      <div class="don-grid">
+        {dons.map((m) => (
+          <a href={`${DON_URL}`} target="_blank" rel="noopener" class="don-chip">{m}&nbsp;€</a>
+        ))}
+      </div>
+
+      <ul class="tier-list">
+        <li>✓ Vous soutenez directement l'association</li>
+        <li>✓ 100&nbsp;% reversé aux activités</li>
+        <li>✓ Aucun engagement</li>
+      </ul>
+
+      <a href={DON_URL} target="_blank" rel="noopener" class="tier-btn ghost">Faire un don</a>
+    </article>
+
+    <!-- Tier 2 : cotisation membre -->
+    <article class="tier featured">
+      <span class="tier-flag">Le plus populaire</span>
+      <div class="tier-icon">🛡️</div>
+      <h2>Cotisation membre</h2>
+      <p class="tier-sub">L'accès complet à la communauté.</p>
+      <p class="tier-price"><strong>20&nbsp;€</strong> <span>/ an</span></p>
+
+      <ul class="tier-list">
+        <li>✓ Accès à tous les <strong>ateliers</strong> et <strong>groupes de parole</strong></li>
+        <li>✓ Priorité d'inscription aux événements</li>
+        <li>✓ Newsletter et espace membres</li>
+        <li>✓ Vous faites partie du mouvement</li>
+      </ul>
+
+      <a href={MEMBRE_URL} target="_blank" rel="noopener" class="tier-btn primary">Devenir membre</a>
+    </article>
+  </div>
+
+  <p class="reassurance">Paiement sécurisé · Vous pouvez aussi nous contacter à
+    <a href="mailto:contact@femmesetguerrieres.be">contact@femmesetguerrieres.be</a> pour un virement.</p>
+</BaseLayout>
+
+<style>
+  .intro { text-align: center; margin-bottom: 2rem; }
+  .badge {
+    display: inline-block;
+    background: rgba(17, 109, 255, 0.10);
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+  }
+  .intro h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); margin-bottom: 0.6rem; }
+  .intro p { max-width: 34rem; margin: 0 auto; color: var(--color-taupe-dark); }
+
+  .tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .tier {
+    position: relative;
+    background: #fff;
+    border-radius: 24px;
+    padding: 2rem 1.6rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(136, 119, 118, 0.10);
+  }
+  .tier.featured {
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--shadow);
+  }
+  .tier-flag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tier-icon {
+    width: 56px; height: 56px;
+    display: grid; place-items: center;
+    font-size: 1.7rem;
+    background: var(--color-pink);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+  .tier h2 { font-size: 1.35rem; }
+  .tier-sub { color: var(--color-taupe); margin-bottom: 0.9rem; }
+  .tier-price { font-size: 1.05rem; color: var(--color-taupe-dark); margin-bottom: 1rem; }
+  .tier-price strong { font-size: 1.9rem; color: var(--color-text); }
+  .tier-price span { color: var(--color-taupe); font-size: 0.95rem; }
+
+  .don-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.1rem;
+  }
+  .don-chip {
+    text-align: center;
+    padding: 0.6rem 0;
+    border-radius: 12px;
+    background: var(--color-cream);
+    border: 1px solid rgba(136, 119, 118, 0.15);
+    font-weight: 600;
+    color: var(--color-text);
+    transition: background .15s, color .15s, transform .15s;
+  }
+  .don-chip:hover { background: var(--color-primary); color: #fff; transform: translateY(-2px); }
+
+  .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.4rem; }
+  .tier-list li { font-size: 0.92rem; color: var(--color-taupe-dark); }
+
+  .tier-btn {
+    display: block;
+    text-align: center;
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform .15s, background .15s;
+  }
+  .tier-btn.primary { background: var(--color-primary); color: #fff; box-shadow: 0 8px 20px rgba(17,109,255,0.30); }
+  .tier-btn.primary:hover { transform: translateY(-2px); }
+  .tier-btn.ghost { background: var(--color-cream); color: var(--color-primary); border: 2px solid var(--color-primary); }
+  .tier-btn.ghost:hover { background: var(--color-primary); color: #fff; }
+
+  .reassurance { text-align: center; color: var(--color-taupe); font-size: 0.85rem; margin-top: 1.5rem; }
+</style>
