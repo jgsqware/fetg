@@ -1,47 +1,77 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const valeurs = [
-  { icon: "🤝", title: "Entraide", text: "Un réseau de femmes qui se soutiennent, s'écoutent et avancent ensemble." },
-  { icon: "💬", title: "Écoute", text: "Des groupes de parole bienveillants, en présentiel ou en visio." },
-  { icon: "🌸", title: "Bien-être", text: "Des ateliers pour prendre soin de soi et se reconstruire." },
-  { icon: "💪", title: "Force", text: "Parce que la maladie n'efface pas notre féminité ni notre combativité." },
+// Photos de l'équipe (CDN d'origine du site officiel).
+const team = [
+  {
+    name: "Carole Zubani",
+    role: "Présidente",
+    photo: "https://static.wixstatic.com/media/14c717_94ec10597aa74732901c05df94a65f10~mv2.jpg",
+    quote: "Après avoir traversé des parcours PMA et vécu avec de l'endométriose plusieurs années, c'est quand le cancer s'est invité dans ma vie que l'envie de créer une assoc' de femmes s'est imposée à moi. Patiente d'onco depuis 2020, je suis convaincue qu'ensemble nous pouvons mieux vivre notre combat, que l'entraide et le partage mènent à une forme de résilience. Nous sommes toutes des guerrières !",
+  },
+  {
+    name: "Julie Baré",
+    role: "Responsable communication",
+    photo: "https://static.wixstatic.com/media/14c717_d38e836de50444e2a11a33909d87eb3a~mv2.jpg",
+  },
+  {
+    name: "Céline Liurno",
+    role: "Psychologue",
+    photo: "https://static.wixstatic.com/media/14c717_1f1d5a76092d44b087b7b8aba41c48df~mv2.jpeg",
+  },
+  {
+    name: "Anne-Sophie Struman",
+    role: "Soutien administratif et logistique",
+    photo: "https://static.wixstatic.com/media/419aa9_ce6cf41ffac343948685f8035b8489a5~mv2.jpeg",
+  },
 ];
 ---
 
 <BaseLayout title="Qui sommes-nous">
   <section class="head">
     <img src="/logo.jpeg" alt="Femmes & Guerrières" class="head-logo" />
-    <span class="badge">Notre association</span>
+    <span class="badge">À propos de Femmes &amp; Guerrières</span>
     <h1>Qui sommes-nous&nbsp;?</h1>
     <p class="tagline">« Quand la maladie vient altérer notre féminité » 🩷</p>
   </section>
 
   <section class="prose">
     <p>
-      <strong>Femmes &amp; Guerrières</strong> est une association sans but lucratif née d'un constat simple :
-      lorsque la maladie s'invite dans la vie d'une femme, elle bouleverse aussi son rapport à son corps,
-      à sa féminité et à sa confiance. Nous sommes là pour que personne ne traverse cela seule.
+      <strong>Femmes &amp; Guerrières</strong> est une organisation à but non lucratif dédiée au soutien
+      des femmes souffrant ou ayant souffert d'un <strong>cancer</strong>, de <strong>pathologies
+      chroniques</strong>, <strong>gynécologiques</strong> ou de <strong>maladies auto-immunes</strong>.
     </p>
     <p>
-      Nous réunissons des femmes confrontées à la maladie — et celles qui les entourent — autour de
-      <strong>groupes de parole</strong>, d'<strong>ateliers bien-être</strong> et de moments de partage.
-      Dans un cadre chaleureux et sécurisant, chacune trouve sa place, à son rythme.
+      Notre plateforme est un espace où nous partageons notre histoire et établissons un lien avec nos
+      membres. Vous y trouverez notre mission, les services que nous offrons et l'équipe passionnée qui
+      anime notre association. Rejoignez-nous dans notre quête d'améliorer notre quotidien de femme et de
+      multiplier les partages.
     </p>
+    <p class="prose-highlight">Vive la vie, vive les femmes&nbsp;! 🌟</p>
+  </section>
+
+  <section class="belief">
     <p>
-      Solidaires d'initiatives comme le <strong>Relais pour la Vie</strong>, nous croyons en la force du
-      collectif et en la beauté de se relever ensemble, plus fortes.
+      Chez Femmes &amp; Guerrières, nous croyons au potentiel de chacune. Lors de nos rencontres, nous
+      privilégions l'écoute, l'échange et la bienveillance. Nos parcours de vie sont tous uniques et les
+      chemins que nous empruntons seront toujours respectés. ✨
     </p>
   </section>
 
-  <section class="values">
-    {valeurs.map((v) => (
-      <article class="value-card">
-        <div class="value-icon">{v.icon}</div>
-        <h3>{v.title}</h3>
-        <p>{v.text}</p>
-      </article>
-    ))}
+  <section class="team-section">
+    <h2>L'équipe</h2>
+    <div class="team">
+      {team.map((m) => (
+        <article class={`member ${m.quote ? 'member-lead' : ''}`}>
+          <img src={m.photo} alt={m.name} class="member-photo" loading="lazy" />
+          <div class="member-body">
+            <h3>{m.name}</h3>
+            <p class="member-role">{m.role}</p>
+            {m.quote && <p class="member-quote">« {m.quote} »</p>}
+          </div>
+        </article>
+      ))}
+    </div>
   </section>
 
   <section class="cta">
@@ -55,7 +85,7 @@ const valeurs = [
 </BaseLayout>
 
 <style>
-  .head { text-align: center; margin-bottom: 2.5rem; }
+  .head { text-align: center; margin-bottom: 2.2rem; }
   .head-logo {
     width: 110px; height: 110px; border-radius: 50%;
     object-fit: cover; margin: 0 auto 1rem;
@@ -70,28 +100,41 @@ const valeurs = [
   .tagline { font-style: italic; color: var(--color-accent-dark); font-weight: 500; margin-top: 0.4rem; }
 
   .prose {
-    max-width: 46rem; margin: 0 auto 2.5rem;
+    max-width: 46rem; margin: 0 auto 1.5rem;
     background: #fff; border-radius: 24px; padding: 2rem;
     box-shadow: var(--shadow-sm);
   }
   .prose p { margin-bottom: 1rem; color: var(--color-taupe-dark); }
-  .prose p:last-child { margin-bottom: 0; }
+  .prose-highlight {
+    text-align: center; font-weight: 600; color: var(--color-accent-dark);
+    font-size: 1.1rem; margin-bottom: 0 !important;
+  }
 
-  .values {
+  .belief {
+    max-width: 46rem; margin: 0 auto 2.5rem; text-align: center;
+    background: linear-gradient(160deg, var(--color-pink), #fff);
+    border-radius: 24px; padding: 2rem; box-shadow: var(--shadow-sm);
+  }
+  .belief p { color: var(--color-taupe-dark); font-style: italic; font-size: 1.05rem; }
+
+  .team-section { margin-bottom: 2.5rem; }
+  .team-section h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.5rem; }
+  .team {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.1rem; margin-bottom: 2.5rem;
+    gap: 1.2rem;
   }
-  .value-card {
-    background: #fff; border-radius: 20px; padding: 1.5rem;
-    box-shadow: var(--shadow-sm); text-align: center;
+  .member {
+    background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow-sm); transition: transform .15s, box-shadow .15s;
   }
-  .value-icon {
-    width: 54px; height: 54px; margin: 0 auto 0.8rem;
-    display: grid; place-items: center; font-size: 1.6rem;
-    background: var(--color-pink); border-radius: 16px;
-  }
-  .value-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-  .value-card p { font-size: 0.92rem; color: var(--color-taupe-dark); }
+  .member:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .member-lead { grid-column: 1 / -1; display: grid; grid-template-columns: 240px 1fr; }
+  .member-photo { width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--color-pink); }
+  .member-lead .member-photo { aspect-ratio: auto; }
+  .member-body { padding: 1.1rem 1.2rem; }
+  .member-body h3 { font-size: 1.2rem; }
+  .member-role { color: var(--color-accent-dark); font-weight: 600; font-size: 0.92rem; margin-top: 0.15rem; }
+  .member-quote { margin-top: 0.8rem; color: var(--color-taupe-dark); font-style: italic; font-size: 0.95rem; line-height: 1.6; }
 
   .cta {
     text-align: center; background: linear-gradient(160deg, var(--color-accent), var(--color-accent-dark));
@@ -105,4 +148,9 @@ const valeurs = [
   .btn-primary:hover { transform: translateY(-2px); }
   .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.75); }
   .btn-outline:hover { background: #fff; color: var(--color-accent-dark); }
+
+  @media (max-width: 600px) {
+    .member-lead { grid-template-columns: 1fr; }
+    .member-lead .member-photo { aspect-ratio: 4 / 3; }
+  }
 </style>
