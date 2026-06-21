@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node scripts/sync-facebook-events.mjs",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "sync:fb": "node scripts/sync-facebook-events.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^3.1.0",

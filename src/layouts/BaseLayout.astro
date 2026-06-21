@@ -10,11 +10,22 @@ const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === "/" ? path === "/" : path.startsWith(href);
 
+// Barre du bas (mobile) — 4 entrées max
 const nav = [
   { href: "/", label: "Accueil", icon: "🏠" },
   { href: "/evenements", label: "Agenda", icon: "📅" },
   { href: "/soutenir", label: "Soutenir", icon: "💛" },
   { href: "/contact", label: "Contact", icon: "✉️" },
+];
+
+// Navigation complète (desktop)
+const topLinks = [
+  { href: "/", label: "Accueil" },
+  { href: "/a-propos", label: "Qui sommes-nous" },
+  { href: "/evenements", label: "Agenda" },
+  { href: "/galeries", label: "Galeries" },
+  { href: "/articles", label: "News" },
+  { href: "/contact", label: "Contact" },
 ];
 ---
 
@@ -39,12 +50,11 @@ const nav = [
           <span>Femmes&nbsp;&amp;&nbsp;Guerrières</span>
         </a>
         <ul class="topnav-links">
-          {nav.map((item) => (
+          {topLinks.map((item) => (
             <li>
               <a href={item.href} class={isActive(item.href) ? "active" : ""}>{item.label}</a>
             </li>
           ))}
-          <li><a href="/articles" class={isActive("/articles") ? "active" : ""}>News</a></li>
         </ul>
         <a href="/soutenir" class="topnav-cta">Devenir membre</a>
       </nav>

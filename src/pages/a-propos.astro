@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const valeurs = [
+  { icon: "🤝", title: "Entraide", text: "Un réseau de femmes qui se soutiennent, s'écoutent et avancent ensemble." },
+  { icon: "💬", title: "Écoute", text: "Des groupes de parole bienveillants, en présentiel ou en visio." },
+  { icon: "🌸", title: "Bien-être", text: "Des ateliers pour prendre soin de soi et se reconstruire." },
+  { icon: "💪", title: "Force", text: "Parce que la maladie n'efface pas notre féminité ni notre combativité." },
+];
+---
+
+<BaseLayout title="Qui sommes-nous">
+  <section class="head">
+    <img src="/logo.jpeg" alt="Femmes & Guerrières" class="head-logo" />
+    <span class="badge">Notre association</span>
+    <h1>Qui sommes-nous&nbsp;?</h1>
+    <p class="tagline">« Quand la maladie vient altérer notre féminité » 🩷</p>
+  </section>
+
+  <section class="prose">
+    <p>
+      <strong>Femmes &amp; Guerrières</strong> est une association sans but lucratif née d'un constat simple :
+      lorsque la maladie s'invite dans la vie d'une femme, elle bouleverse aussi son rapport à son corps,
+      à sa féminité et à sa confiance. Nous sommes là pour que personne ne traverse cela seule.
+    </p>
+    <p>
+      Nous réunissons des femmes confrontées à la maladie — et celles qui les entourent — autour de
+      <strong>groupes de parole</strong>, d'<strong>ateliers bien-être</strong> et de moments de partage.
+      Dans un cadre chaleureux et sécurisant, chacune trouve sa place, à son rythme.
+    </p>
+    <p>
+      Solidaires d'initiatives comme le <strong>Relais pour la Vie</strong>, nous croyons en la force du
+      collectif et en la beauté de se relever ensemble, plus fortes.
+    </p>
+  </section>
+
+  <section class="values">
+    {valeurs.map((v) => (
+      <article class="value-card">
+        <div class="value-icon">{v.icon}</div>
+        <h3>{v.title}</h3>
+        <p>{v.text}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="cta">
+    <h2>Envie de nous rejoindre&nbsp;?</h2>
+    <p>Participez à nos rencontres ou soutenez l'association.</p>
+    <div class="cta-btns">
+      <a href="/evenements" class="btn btn-primary">Voir l'agenda</a>
+      <a href="/soutenir" class="btn btn-outline">Soutenir l'asbl</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { text-align: center; margin-bottom: 2.5rem; }
+  .head-logo {
+    width: 110px; height: 110px; border-radius: 50%;
+    object-fit: cover; margin: 0 auto 1rem;
+    border: 4px solid #fff; box-shadow: var(--shadow);
+  }
+  .badge {
+    display: inline-block; background: rgba(224,137,155,0.18);
+    color: var(--color-accent-dark); font-size: 0.78rem; font-weight: 600;
+    padding: 0.35rem 0.85rem; border-radius: 999px; margin-bottom: 0.8rem;
+  }
+  .head h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
+  .tagline { font-style: italic; color: var(--color-accent-dark); font-weight: 500; margin-top: 0.4rem; }
+
+  .prose {
+    max-width: 46rem; margin: 0 auto 2.5rem;
+    background: #fff; border-radius: 24px; padding: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .prose p { margin-bottom: 1rem; color: var(--color-taupe-dark); }
+  .prose p:last-child { margin-bottom: 0; }
+
+  .values {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem; margin-bottom: 2.5rem;
+  }
+  .value-card {
+    background: #fff; border-radius: 20px; padding: 1.5rem;
+    box-shadow: var(--shadow-sm); text-align: center;
+  }
+  .value-icon {
+    width: 54px; height: 54px; margin: 0 auto 0.8rem;
+    display: grid; place-items: center; font-size: 1.6rem;
+    background: var(--color-pink); border-radius: 16px;
+  }
+  .value-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .value-card p { font-size: 0.92rem; color: var(--color-taupe-dark); }
+
+  .cta {
+    text-align: center; background: linear-gradient(160deg, var(--color-accent), var(--color-accent-dark));
+    color: #fff; border-radius: 26px; padding: 2.5rem 1.5rem; box-shadow: var(--shadow);
+  }
+  .cta h2 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .cta p { opacity: 0.92; margin-bottom: 1.4rem; }
+  .cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 0.8rem 1.5rem; border-radius: 999px; font-weight: 600; transition: transform .15s; }
+  .btn-primary { background: #fff; color: var(--color-accent-dark); }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.75); }
+  .btn-outline:hover { background: #fff; color: var(--color-accent-dark); }
+</style>
