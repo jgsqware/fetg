@@ -1,0 +1,15 @@
+{
+  "id": "fetg",
+  "name": "Femmes et Guerrières",
+  "family": "business",
+  "kind": "static-site",
+  "stack": "Astro 4 (SSG)",
+  "summary": "Site vitrine assoc. auto-défense féminine (BE), sync events Facebook au build",
+  "visibility": "public",
+  "exposes": null,
+  "subtools": [],
+  "depends_on": [
+    "facebook"
+  ],
+  "links": []
+}
